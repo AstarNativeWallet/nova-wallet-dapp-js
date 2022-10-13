@@ -5,7 +5,7 @@ declare global {
       onAppResponse: (msgType: string, response: any, error: Error) => void
       onAppSubscription: (requestId: string, subscriptionString: string) => void
       isNovaWallet: bool
-    },
+    }
     injectedWeb3: {
       [key: string]: {}
     }
@@ -21,10 +21,10 @@ export type MessageData = {
 
 export type Handler = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  resolve: (data?: any) => void;
-  reject: (error: Error) => void;
+  resolve: (data?: any) => void
+  reject: (error: Error) => void
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  subscriber?: (data: any) => void;
+  subscriber?: (data: any) => void
 }
 
-export type Handlers = Map<string, Handler>;
+export type Handlers = Map<string, Handler>

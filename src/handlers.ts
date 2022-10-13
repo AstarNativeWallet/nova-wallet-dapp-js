@@ -17,11 +17,10 @@ class HandlersStore {
       reject,
     })
   }
-  
+
   getHandler = (type: string): Handler | undefined => {
     return this._messageHandlers.get(type)
   }
-  
 }
 
 export default HandlersStore

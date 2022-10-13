@@ -4,11 +4,11 @@ import { MessageData } from './types'
 import HandlerStore from './handlers'
 import packageInfo from '../package.json'
 
-function inject () {
+function inject() {
   injectExtension(enable, {
     name: 'polkadot-js',
     version: packageInfo.version,
-  });
+  })
 }
 
 class WalletExtension {
@@ -16,7 +16,7 @@ class WalletExtension {
 
   constructor() {
     this.handlers = new HandlerStore()
-    window.send = this.sendRequest    
+    window.send = this.sendRequest
 
     // setup a response listener (events created by the loader for extension responses)
     window.addEventListener('message', ({ data, source }) => {
@@ -41,7 +41,7 @@ class WalletExtension {
     window.walletExtension = {
       onAppResponse: this.onAppResponse.bind(this),
       onAppSubscription: this.onAppSubscription.bind(this),
-      isNovaWallet: true
+      isNovaWallet: true,
     }
   }
 
@@ -49,18 +49,18 @@ class WalletExtension {
    * Send message to dapp page as extension-content
    */
   postResponse(data: any) {
-    this._postMessage("content", data)
+    this._postMessage('content', data)
   }
 
   /*
    * Send message to JSChannel: assembly
    */
   sendRequest(data: any) {
-    this._postMessage("dapp-request", data)
+    this._postMessage('dapp-request', data)
   }
 
   _postMessage(origin: string, data: any) {
-    window.postMessage({ ...data, origin }, "*");
+    window.postMessage({ ...data, origin }, '*')
   }
 
   /*
@@ -94,7 +94,7 @@ class WalletExtension {
 
   public onAppSubscription(requestId: string, subscriptionString: string) {
     this.postResponse({ id: requestId, subscription: subscriptionString })
-  }  
+  }
 
   /*
    * Handle message from dapp page as extension-content
@@ -112,7 +112,7 @@ class WalletExtension {
           let response = await this.sendAppRequest(data)
 
           return this.postResponse({ id: data.id, response })
-        } catch (err: any) {
+        } catch (err) {
           return this.postResponse({ id: data.id, error: err.message })
         }
 
