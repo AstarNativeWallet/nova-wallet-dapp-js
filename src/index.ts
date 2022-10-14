@@ -113,7 +113,10 @@ class WalletExtension {
 
           return this.postResponse({ id: data.id, response })
         } catch (err) {
-          return this.postResponse({ id: data.id, error: err.message })
+          if (err instanceof Error) {
+            return this.postResponse({ id: data.id, error: err.message })
+          }
+          console.log('unexpected error')
         }
 
       default:

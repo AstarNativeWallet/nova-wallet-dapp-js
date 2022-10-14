@@ -10,7 +10,7 @@ describe('Extension', function() {
 
   describe('Window object', function() {
     it('Extension should be injected in window', function() {
-      assert.notEqual(window.injectedWeb3['@novawallet/extension'], undefined)
+      assert.notEqual(window.injectedWeb3['polkadot-js'], undefined)
     })
   })
 })
