@@ -11,7 +11,7 @@
     "service_worker": "background.js",
     "type": "module"
   },
-  "browser_action": {
+  "action": {
     "default_title": "Folios extension",
     "default_popup": "popup.html"
   },
